@@ -4,9 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.allenliu</groupId>
-    <artifactId>news</artifactId>
+    <groupId>com.allenliu.news</groupId>
+    <artifactId>news-parent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>news-dao</module>
+        <module>news-common</module>
+        <module>new-domain</module>
+        <module>news-service</module>
+        <module>news-web</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -23,18 +31,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <!-- 添加这个依赖之后就可以创建一个web应用程序。starter poms部分可以引入所有需要在实际项目中使用的依赖。
-            spring-boot-starter-web依赖包含所有的spring-core, spring-web, spring-webmvc，嵌入的Tomcat server和其他web应用相关的库。 -->
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <!-- swagger -->
         <dependency>
@@ -72,12 +68,6 @@
             <version>1.4.0.RELEASE</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-            <version>1.4.0.RELEASE</version>
-        </dependency>
-
         <!--Spring Cloud Config 客户端依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -90,14 +80,6 @@
             <artifactId>spring-cloud-config-server</artifactId>
             <version>1.4.0.RELEASE</version>
         </dependency>
-
-        <!--Spring Boot Actuator，感应服务端变化-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>1.4.0.RELEASE</version>
-        </dependency>
-
     </dependencies>
 
     <build>
