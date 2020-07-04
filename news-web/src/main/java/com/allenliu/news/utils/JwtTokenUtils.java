@@ -3,7 +3,6 @@ package com.allenliu.news.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
 import java.util.Date;
 
 public class JwtTokenUtils {
@@ -20,13 +19,7 @@ public class JwtTokenUtils {
   // 选择了记住我之后的过期时间为7天
   private static final long EXPIRATION_REMEMBER = 604800L;
 
-  /**
-   * 创建token
-   *
-   * @param username
-   * @param isRememberMe
-   * @return
-   */
+  // 创建token
   public static String createToken(String username, boolean isRememberMe) {
     long expiration = isRememberMe ? EXPIRATION_REMEMBER : EXPIRATION;
     return Jwts.builder()
@@ -38,12 +31,12 @@ public class JwtTokenUtils {
         .compact();
   }
 
-  /** 从token中获取用户名 */
+  // 从token中获取用户名
   public static String getUsername(String token) {
     return getTokenBody(token).getSubject();
   }
 
-  /** 是否已过期 */
+  // 是否已过期
   public static boolean isExpiration(String token) {
     return getTokenBody(token).getExpiration().before(new Date());
   }

@@ -5,4 +5,4 @@ spring:
     active: test1
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.allenliu.news.mapper.*
+  type-aliases-package: com.allenliu.news.mapper.*.*
