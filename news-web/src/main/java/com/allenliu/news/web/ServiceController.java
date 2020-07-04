@@ -2,12 +2,14 @@ package com.allenliu.news.web;
 
 // import common.entity.RestfulResult;
 // import common.utils.CommUtils;
+import com.allenliu.news.domain.mdm.page.MdmUserPage;
+import com.allenliu.news.service.mdm.MdmUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 // import sun.entity.ServiceInfo;
-
 
 @RestController // 重要，如果用Controller会404
 @RequestMapping(value = "service")
@@ -15,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
     value = "ServiceController",
     tags = {"测试"})
 public class ServiceController {
-//  @Value("${news.test}")
-//  private String test;
+  //  @Value("${news.test}")
+  //  private String test;
   //    @RequestMapping(value = "hello")
   //    public void login(HttpServletRequest request, HttpServletResponse response,
   //                      @RequestBody ServiceInfo serviceInfo) {
@@ -36,6 +38,14 @@ public class ServiceController {
   @RequestMapping(value = "rest")
   @ApiOperation("rest")
   public String rest() {
-    return "Service1:Welcome !" ;
+    return "Service1:Welcome !";
+  }
+
+  private MdmUserService mdmUserService;
+
+  @RequestMapping(value = "user")
+  @ApiOperation("user")
+  public Object getUser(@RequestBody MdmUserPage userPage) {
+    return mdmUserService.findByPage(userPage);
   }
 }

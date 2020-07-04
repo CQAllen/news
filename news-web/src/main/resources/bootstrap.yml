@@ -1,5 +1,8 @@
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:1111/eureka
+spring:
+  application:
+    name: news
+  profiles:
+    active: test1
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.allenliu.news.mapper.*

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.allenliu.news.mapper.mdm.MdmUserMapper">
+  <resultMap id="BaseResultMap" type="com.allenliu.news.domain.mdm.MdmUser">
+    <!-- 生成器自动生成 resultMap by qinhao.liu -->
+    <id column="id" jdbcType="INT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_id" jdbcType="BIGINT" property="updateId" />
+    <result column="update_name" jdbcType="VARCHAR" property="updateName" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!-- 生成器自动生成 Base_Column_List by qinhao.liu -->
+    id, name, password, create_time, create_id, create_name, update_time,
+    update_id, update_name, deleted
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!-- 生成器自动生成 selectByPrimaryKey SQL by qinhao.liu -->
+    select
+    <include refid="Base_Column_List" />
+    from mdm_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!-- 生成器自动生成 deleteByPrimaryKey SQL by qinhao.liu -->
+    delete from mdm_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.allenliu.news.domain.mdm.MdmUser" useGeneratedKeys="true" keyProperty="id">
+    <!-- 若业务中需要返回主键需要添加 useGeneratedKeys="true" keyProperty="id" !! -->
+    <!-- 生成器自动生成 insert SQL by qinhao.liu -->
+    insert into mdm_user (id, name, password, create_time, create_id,
+    create_name, update_time, update_id, update_name, deleted)
+    values (#{id,jdbcType=INT}, #{name,jdbcType=VARCHAR},
+    #{password,jdbcType=VARCHAR},  #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT},
+    #{createName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT},
+    #{updateName,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.allenliu.news.domain.mdm.MdmUser">
+    <!-- 生成器自动生成 updateByPrimaryKeySelective SQL by qinhao.liu -->
+    update mdm_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        userno = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null">
+        update_id = #{updateId,jdbcType=BIGINT},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.allenliu.news.domain.mdm.MdmUser">
+    <!-- 生成器自动生成 updateByPrimaryKey SQL by qinhao.liu -->
+    update mdm_user
+    set
+    name = #{name,jdbcType=VARCHAR},
+    password = #{password,jdbcType=VARCHAR},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    create_id = #{createId,jdbcType=BIGINT},
+    create_name = #{createName,jdbcType=VARCHAR},
+    update_time = #{updateTime,jdbcType=TIMESTAMP},
+    update_id = #{updateId,jdbcType=BIGINT},
+    update_name = #{updateName,jdbcType=VARCHAR},
+    deleted = #{deleted,jdbcType=TINYINT},
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <!-- 生成器自动生成 批量保存SQL语句,若该业务无此功能可删除此代码 -->
+  <insert id="saveBatch" parameterType="com.allenliu.news.domain.mdm.MdmUser">
+    insert into mdm_user (id, name, password, create_time, create_id,
+    create_name, update_time, update_id, update_name, deleted)
+    values
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.id,jdbcType=INT}, #{item.name,jdbcType=VARCHAR},
+      #{item.password,jdbcType=VARCHAR},  #{item.createTime,jdbcType=TIMESTAMP}, #{item.createId,jdbcType=BIGINT},
+      #{item.createName,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.updateId,jdbcType=BIGINT},
+      #{item.updateName,jdbcType=VARCHAR}, #{item.deleted,jdbcType=TINYINT})
+    </foreach>
+  </insert>
+  <!-- 生成器自动生成 SelectBySelective查询SQL语句 -->
+  <select id="selectBySelective" parameterType="com.allenliu.news.domain.mdm.MdmUser" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from mdm_user where 1 = 1
+    <if test="id != null">
+      and id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="name != null and name != '' ">
+      and name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="password != null and password != '' ">
+      and password = #{password,jdbcType=VARCHAR}
+    </if>
+    <if test="createTime != null">
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createId != null">
+      and create_id = #{createId,jdbcType=BIGINT}
+    </if>
+    <if test="createName != null and createName != '' ">
+      and create_name = #{createName,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTime != null">
+      and update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateId != null">
+      and update_id = #{updateId,jdbcType=BIGINT}
+    </if>
+    <if test="updateName != null and updateName != '' ">
+      and update_name = #{updateName,jdbcType=VARCHAR}
+    </if>
+    <if test="deleted != null">
+      and deleted = #{deleted,jdbcType=TINYINT}
+    </if>
+    order by create_time desc
+  </select>
+  <!-- 生成器自动生成 分页查询SQL语句,请自行添加WHERE条件语句 -->
+  <select id="selectByPage" parameterType="com.allenliu.news.domain.mdm.page.MdmUserPage" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from mdm_user where 1 = 1
+    <if test="name != null and name != '' ">
+      and name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="password != null and password != '' ">
+      and password = #{password,jdbcType=VARCHAR}
+    </if>
+    <if test="createTime != null">
+      and create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createId != null">
+      and create_id = #{createId,jdbcType=BIGINT}
+    </if>
+    <if test="createName != null and createName != '' ">
+      and create_name = #{createName,jdbcType=VARCHAR}
+    </if>
+    <if test="updateTime != null">
+      and update_time = #{updateTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="updateId != null">
+      and update_id = #{updateId,jdbcType=BIGINT}
+    </if>
+    <if test="updateName != null and updateName != '' ">
+      and update_name = #{updateName,jdbcType=VARCHAR}
+    </if>
+    <if test="deleted != null">
+      and deleted = #{deleted,jdbcType=TINYINT}
+    </if>
+    order by create_time desc
+  </select>
+</mapper>

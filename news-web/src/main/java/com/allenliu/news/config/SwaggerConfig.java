@@ -1,4 +1,5 @@
 package com.allenliu.news.config;
+
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +21,7 @@ public class SwaggerConfig {
     return new Docket(DocumentationType.SWAGGER_2)
         .apiInfo(apiInfo())
         .select()
-        .apis(
-            RequestHandlerSelectors.withMethodAnnotation(
-                ApiOperation.class)) // 添加ApiOperiation注解的被扫描
+        .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
         .paths(PathSelectors.any())
         .build();
   }
@@ -31,8 +30,8 @@ public class SwaggerConfig {
 
     ApiInfo build =
         new ApiInfoBuilder()
-            .title("swagger和springBoot整合")
-            .description("swagger的API文档")
+            .title("News")
+            .description("News的API文档")
             .version("1.0")
             .build();
     return build;
