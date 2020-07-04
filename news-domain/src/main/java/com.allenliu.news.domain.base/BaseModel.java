@@ -23,7 +23,7 @@ public class BaseModel implements Serializable {
 	/** update user */
 	private String updateName;
 	/** deleted flag 0:none-deleted 1:deleted */
-	private Integer deleted;
+	private Integer deleted = 0;
 
 	public Integer getId() {
 		return id;

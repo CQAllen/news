@@ -3,7 +3,7 @@
 <mapper namespace="com.allenliu.news.mapper.mdm.MdmUserMapper">
   <resultMap id="BaseResultMap" type="com.allenliu.news.domain.mdm.MdmUser">
     <!-- 生成器自动生成 resultMap by qinhao.liu -->
-    <id column="id" jdbcType="INT" property="id" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -36,7 +36,7 @@
     <!-- 生成器自动生成 insert SQL by qinhao.liu -->
     insert into mdm_user (id, name, password, create_time, create_id,
     create_name, update_time, update_id, update_name, deleted)
-    values (#{id,jdbcType=INT}, #{name,jdbcType=VARCHAR},
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
     #{password,jdbcType=VARCHAR},  #{createTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=BIGINT},
     #{createName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateId,jdbcType=BIGINT},
     #{updateName,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT})
@@ -96,7 +96,7 @@
     create_name, update_time, update_id, update_name, deleted)
     values
     <foreach collection="list" index="index" item="item" separator=",">
-      (#{item.id,jdbcType=INT}, #{item.name,jdbcType=VARCHAR},
+      (#{item.id,jdbcType=INTEGER}, #{item.name,jdbcType=VARCHAR},
       #{item.password,jdbcType=VARCHAR},  #{item.createTime,jdbcType=TIMESTAMP}, #{item.createId,jdbcType=BIGINT},
       #{item.createName,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.updateId,jdbcType=BIGINT},
       #{item.updateName,jdbcType=VARCHAR}, #{item.deleted,jdbcType=TINYINT})
