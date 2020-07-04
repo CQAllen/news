@@ -81,6 +81,18 @@
             <artifactId>spring-cloud-config-server</artifactId>
             <version>1.4.7.RELEASE</version>
         </dependency>
+
+        <!-- elasticsearch -->
+        <dependency>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>5.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>5.5.3</version>
+        </dependency>
     </dependencies>
 
     <build>

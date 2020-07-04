@@ -49,7 +49,7 @@
         name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
-        userno = #{password,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},

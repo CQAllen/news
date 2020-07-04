@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("user")
-@Api(tags = "/user")
+@Api(tags = "用户")
 public class UserController {
   @Resource
   private MdmUserServiceImpl mdmUserService;

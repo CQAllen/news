@@ -3,6 +3,10 @@ spring:
     name: news
   profiles:
     active: test1
+  elasticsearch:
+    jest:
+      uris: http://127.0.0.1:32769
+
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.allenliu.news.mapper.*.*
