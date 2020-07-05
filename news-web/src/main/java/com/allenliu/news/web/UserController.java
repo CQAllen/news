@@ -3,12 +3,10 @@ package com.allenliu.news.web;
 import com.allenliu.news.domain.mdm.MdmUser;
 import com.allenliu.news.domain.mdm.page.MdmUserPage;
 import com.allenliu.news.framework.ApiResult;
-import com.allenliu.news.service.mdm.MdmUserService;
 import com.allenliu.news.service.mdm.impl.MdmUserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("user")
-@Api(tags = "/user")
+@Api(tags = "用户")
 public class UserController {
   @Resource
   private MdmUserServiceImpl mdmUserService;

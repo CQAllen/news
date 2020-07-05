@@ -14,7 +14,6 @@
         <module>news-domain</module>
         <module>news-service</module>
         <module>news-web</module>
-        <module>news-framework</module>
     </modules>
 
     <parent>
@@ -81,11 +80,17 @@
             <artifactId>spring-cloud-config-server</artifactId>
             <version>1.4.7.RELEASE</version>
         </dependency>
-        <!-- jwt -->
+
+        <!-- elasticsearch -->
         <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>5.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>5.5.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

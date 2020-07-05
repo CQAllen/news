@@ -1,7 +1,9 @@
 package com.allenliu.news.domain.base;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *  @Author: Allen Liu
@@ -13,12 +15,16 @@ public class BaseModel implements Serializable {
 	/** create id */
 	private Integer createId;
 	/** create time */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
 	/** create user */
 	private String createName;
 	/** update time */
 	private Integer updateId;
 	/** update time */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
 	/** update user */
 	private String updateName;
