@@ -23,18 +23,29 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
   @Resource
   private MdmUserServiceImpl mdmUserService;
+  @Resource
+  private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @PostMapping(value = "findByPage")
   @ApiOperation("分页查询用户")
-  public Object getUser(@RequestBody(required = false) MdmUserPage userPage) {
+  public Object getUser(@RequestBody MdmUserPage userPage) {
     return mdmUserService.findByPage(userPage);
   }
+
   @PostMapping("register")
   @ApiOperation("用户注册")
   public ApiResult add(@RequestBody MdmUser mdmUser){
-    BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
-    mdmUser.setPassword(bcryptPasswordEncoder.encode(mdmUser.getPassword()));
+    String password = bCryptPasswordEncoder.encode(mdmUser.getPassword());
+    bCryptPasswordEncoder.matches(mdmUser.getPassword(),password);
+    mdmUser.setPassword(password);
     mdmUserService.save(mdmUser);
     return ApiResult.buildSuccess();
   }
+
+  @PostMapping(value = "login")
+  @ApiOperation("登陆")
+  public Object getUser(@RequestBody MdmUser mdmUser) {
+    return "test";
+  }
+
 }

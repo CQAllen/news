@@ -7,15 +7,16 @@ import com.allenliu.news.domain.base.BaseModel;
  * @Date: 2020/7/4 1:20 下午
  */
 public class MdmUser extends BaseModel {
-  private String name;
+  private String username;
   private String password;
+  private String role;
 
-  public String getName() {
-    return name;
+  public String getUsername() {
+    return username;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getPassword() {
@@ -26,11 +27,20 @@ public class MdmUser extends BaseModel {
     this.password = password;
   }
 
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
+  }
+
   @Override
   public String toString() {
     return "MdmUser{" +
-        "name='" + name + '\'' +
+        "name='" + username + '\'' +
         ", password='" + password + '\'' +
+        ", role='" + role + '\'' +
         '}';
   }
 }

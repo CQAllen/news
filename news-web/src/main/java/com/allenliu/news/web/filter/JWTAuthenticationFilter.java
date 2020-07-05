@@ -1,6 +1,7 @@
 package com.allenliu.news.web.filter;
 
 import com.allenliu.news.domain.mdm.MdmUser;
+import com.allenliu.news.domain.mdm.dto.JwtUser;
 import com.allenliu.news.utils.JwtTokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -28,20 +29,17 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
   public Authentication attemptAuthentication(
       HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
-    // 从输入流中获取到登录的信息
     try {
       MdmUser loginUser = new ObjectMapper().readValue(request.getInputStream(), MdmUser.class);
       return authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(
-              loginUser.getName(), loginUser.getPassword(), new ArrayList<>()));
+              loginUser.getUsername(), loginUser.getPassword(), new ArrayList<>()));
     } catch (IOException e) {
       e.printStackTrace();
       return null;
     }
   }
 
-  // 成功验证后调用的方法
-  // 如果验证成功，就生成token并返回
   @Override
   protected void successfulAuthentication(
       HttpServletRequest request,
@@ -50,16 +48,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
       Authentication authResult)
       throws IOException, ServletException {
 
-    MdmUser user = (MdmUser) authResult.getPrincipal();
+    JwtUser user = (JwtUser) authResult.getPrincipal();
     System.out.println("jwtUser:" + user.toString());
-    String token = JwtTokenUtils.createToken(user.getName(), false);
-    // 返回创建成功的token
-    // 但是这里创建的token只是单纯的token
-    // 按照jwt的规定，最后请求的格式应该是 `Bearer token`
+    String token = JwtTokenUtils.createToken(user.getUsername(), false);
     response.setHeader("token", JwtTokenUtils.TOKEN_PREFIX + token);
   }
 
-  // 这是验证失败时候调用的方法
   @Override
   protected void unsuccessfulAuthentication(
       HttpServletRequest request, HttpServletResponse response, AuthenticationException failed)
