@@ -46,7 +46,7 @@
     update busi_news_info
     <set>
       <if test="newsTitle != null">
-        new_title = #{newsTitle,jdbcType=VARCHAR},
+        news_title = #{newsTitle,jdbcType=VARCHAR},
       </if>
       <if test="newsContent != null">
         news_content = #{newsContent,jdbcType=VARCHAR},
