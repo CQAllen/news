@@ -54,7 +54,17 @@ public class NewsInfoController {
     //成功更新且更新不是删除新闻，刷新es
     if(count > 0 && newsInfo.getDeleted() == 0){
       JSONObject jsonObject = JSONObject.parseObject(JSON.toJSONString(newsInfo));
-      elasticSearchService.updateDocument(jsonObject,"newsinfo","newsinfo",newsInfo.getId().toString());
+      elasticSearchService.updateDocument(jsonObject,"newsinfo","newsinfo",String.valueOf(newsInfo.getId()));
+    }
+    return ApiResult.buildSuccess();
+  }
+
+  @PostMapping("remove")
+  @ApiOperation("删除新闻")
+  public ApiResult removeNews(@RequestBody NewsInfo newsInfo){
+    int count = newsInfoService.deleteById(newsInfo.getId());
+    if(count > 0){
+      elasticSearchService.deleteDocument("newsinfo","newsinfo", String.valueOf(newsInfo.getId()));
     }
     return ApiResult.buildSuccess();
   }

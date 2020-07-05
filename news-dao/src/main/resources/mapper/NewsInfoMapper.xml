@@ -28,8 +28,7 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!-- 生成器自动生成 deleteByPrimaryKey SQL by qinhao.liu -->
-    delete from busi_news_info
-    where id = #{id,jdbcType=BIGINT}
+    update busi_news_info set deleted = 1 where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.allenliu.news.domain.busi.NewsInfo" useGeneratedKeys="true" keyProperty="id">
     <!-- 若业务中需要返回主键需要添加 useGeneratedKeys="true" keyProperty="id" !! -->

@@ -29,8 +29,7 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!-- 生成器自动生成 deleteByPrimaryKey SQL by qinhao.liu -->
-    delete from mdm_user
-    where id = #{id,jdbcType=BIGINT}
+    update mdm_user set deleted = 1 where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.allenliu.news.domain.mdm.MdmUser" useGeneratedKeys="true" keyProperty="id">
     <!-- 若业务中需要返回主键需要添加 useGeneratedKeys="true" keyProperty="id" !! -->
