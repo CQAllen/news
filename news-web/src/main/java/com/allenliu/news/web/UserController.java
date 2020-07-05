@@ -44,8 +44,8 @@ public class UserController {
 
   @PostMapping(value = "login")
   @ApiOperation("登陆")
-  public Object getUser(@RequestBody MdmUser mdmUser) {
-    return "test";
+  public ApiResult getUser(@RequestBody MdmUser mdmUser) {
+    return ApiResult.buildSuccess();
   }
 
 }
