@@ -12,6 +12,8 @@ Mybatis + Mysql数据持久化
  
 Elasticsearch + Jest全文检索
 
+Swagger2.0接口api文档
+
 Eureka Server端 https://github.com/CQAllen/eurekaServer
 
 git配置中心 https://github.com/CQAllen/config-center
