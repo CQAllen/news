@@ -1,7 +1,6 @@
 package com.allenliu.news.framework;
 
 import com.allenliu.news.framework.enums.ApiResultEnum;
-import java.util.Map;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +16,7 @@ public class BusinessExceptionControllerAdvice {
      */
     @ResponseBody
     @ExceptionHandler(Exception.class)
-    public ApiResult crmBusinessExceptionHandler(Exception e) {
+    public ApiResult exceptionHandler(Exception e) {
         return ApiResult.build(ApiResultEnum.SYSTEM_EXCEPTION);
     }
 }
