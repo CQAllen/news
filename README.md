@@ -14,6 +14,8 @@ Elasticsearch + Jest全文检索
 
 Swagger2.0接口api文档
 
-Eureka Server端 https://github.com/CQAllen/eurekaServer
+Eureka Server https://github.com/CQAllen/eurekaServer
+
+Config Server https://github.com/CQAllen/configServer
 
 git配置中心 https://github.com/CQAllen/config-center
